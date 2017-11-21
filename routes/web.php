@@ -16,10 +16,8 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     $tasks = Task::orderBy('created_at', 'asc')->get();
-    
-    return view('tasks', [
-        'tasks' => $tasks
-    ]);
+
+    return view('tasks', ['tasks' => $tasks]);
 });
 
 Route::post('/task', function(Request $request) {
@@ -42,6 +40,6 @@ Route::post('/task', function(Request $request) {
 
 Route::delete('/task/{task}', function(Task $task) {
     $task->delete();
-    
+
     return redirect('/');
 });
